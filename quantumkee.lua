@@ -4,7 +4,7 @@
 -- ──────────────────────────────────────────────
 -- CONFIG — edit these two lines
 -- ──────────────────────────────────────────────
-local KEYS_URL   = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/keys.json"
+local KEYS_URL   = "https://raw.githubusercontent.com/loapse/keysystem/main/keys.json"
 local SCRIPT_URL = "https://raw.githubusercontent.com/loapse/Quantum/refs/heads/main/Quantum.lua"
 
 -- ──────────────────────────────────────────────
