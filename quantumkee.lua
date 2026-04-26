@@ -3,7 +3,7 @@
 -- ─────────────────────────────────────────────
 
 local KEYS_URL   = "https://raw.githubusercontent.com/loapse/keysystem/main/keys.json"
-local SCRIPT_URL = "https://raw.githubusercontent.com/loapse/quantumkee/refs/heads/main/quantumkee.lua"
+local SCRIPT_URL = "https://raw.githubusercontent.com/loapse/quantum/refs/heads/main/quantum.lua"
 
 -- ─────────────────────────────────────────────
 -- SERVICES
