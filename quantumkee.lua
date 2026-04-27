@@ -3,7 +3,7 @@
 -- ─────────────────────────────────────────────
 
 local KEYS_URL   = "https://raw.githubusercontent.com/loapse/keysystem/main/keys.json"
-local SCRIPT_URL = "https://raw.githubusercontent.com/loapse/quantum/refs/heads/main/quantum.lua"
+local SCRIPT_URL = "https://raw.githubusercontent.com/loapse/quantumkee/refs/heads/main/quantumkee.lua"
 
 -- ─────────────────────────────────────────────
 -- SERVICES
@@ -76,8 +76,8 @@ end
 -- DESTROY OLD INSTANCE
 -- ─────────────────────────────────────────────
 pcall(function()
-    local cg = game:GetService("CoreGui")
-    local old = cg:FindFirstChild("QuantumKeySystem")
+    local parent = gethui and gethui() or game:GetService("CoreGui")
+    local old = parent:FindFirstChild("QuantumKeySystem")
     if old then old:Destroy() end
 end)
 
@@ -88,9 +88,14 @@ local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "QuantumKeySystem"
 ScreenGui.ResetOnSpawn = false
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-pcall(function() ScreenGui.Parent = game:GetService("CoreGui") end)
-if not ScreenGui.Parent then
-    ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+-- gethui() works on Xeno, Fluxus, and most modern executors
+if gethui then
+    ScreenGui.Parent = gethui()
+else
+    local ok = pcall(function() ScreenGui.Parent = game:GetService("CoreGui") end)
+    if not ok or not ScreenGui.Parent then
+        ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+    end
 end
 
 -- dim bg
@@ -440,9 +445,3 @@ end)
 
 -- show hwid immediately so user can report it if needed
 HwidLabel.Text = "hwid: " .. getHWID()
-
--- fade in animation
-Card.BackgroundTransparency = 1
-TweenService:Create(Card, TweenInfo.new(0.3, Enum.EasingStyle.Quad), {BackgroundTransparency=0}):Play()
-BG.BackgroundTransparency = 1
-TweenService:Create(BG, TweenInfo.new(0.3), {BackgroundTransparency=0.45}):Play()
